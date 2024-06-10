@@ -1,0 +1,17 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Leaderboard {
+  createdAt DateTime @default(now())
+  gameId    String?
+  id        String   @id @default(cuid())
+  score     Int?
+  updatedAt DateTime @updatedAt
+  userId    String?
+}
